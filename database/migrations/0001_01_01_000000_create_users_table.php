@@ -43,8 +43,6 @@ return new class extends Migration
             // Información adicional
             $table->text('notes')->nullable();
 
-            // Restricciones y tiempos
-            $table->unique(['email', 'clinic_id']);
             $table->timestamps();
         });
 
