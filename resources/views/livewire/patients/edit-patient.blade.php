@@ -27,8 +27,8 @@
                     @error('phone') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
                 <div class="w-full">
-                    <x-input-label for="phone">Email*</x-input-label>
-                    <x-text-input type="email" id="phone" class="w-full" wire:model="email"></x-text-input>
+                    <x-input-label for="email">Email*</x-input-label>
+                    <x-text-input type="email" id="email" class="w-full" wire:model="email"></x-text-input>
                     @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
             </div>

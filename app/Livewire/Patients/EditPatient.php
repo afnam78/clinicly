@@ -77,9 +77,9 @@ class EditPatient extends Component
 
             redirect()->route('patients.table')->success('Paciente actualizado exitosamente');
         } catch (\Exception $e) {
-            Log::error('Error al crear el paciente', [$e->getMessage()]);
+            Log::error('Error al actualizar el paciente', [$e->getMessage()]);
 
-            $this->error('Error al crear el paciente');
+            $this->error('Error al actualizar el paciente');
         }
     }
 }
