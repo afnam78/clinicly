@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Domain\Enums\RoleEnum;
 use App\Models\Clinic;
 use App\Models\Service;
 use App\Models\User;
@@ -47,9 +48,17 @@ class DatabaseSeeder extends Seeder
         $service = Service::factory()->create([
             'name' => 'Mesoterapia',
             'clinic_id' => $clinic->id,
-            'price' => 100,
-            'duration_minutes' => 60,
         ]);
 
+        $patient = User::factory()->create([
+            'name' => 'Patient User',
+            'last_name' => 'Pérez',
+            'nif' => 'X5165038C',
+            'phone' => '666666666',
+            'email' => 'paciente@example.com',
+            'password' => bcrypt(fake()->password()),
+            'role' => RoleEnum::PATIENT->value,
+            'clinic_id' => $clinic->id,
+        ]);
     }
 }

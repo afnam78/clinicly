@@ -41,5 +41,7 @@
             </main>
         </div>
         <x-toaster-hub /> <!-- 👈 -->
+
+    @stack('scripts')
     </body>
 </html>

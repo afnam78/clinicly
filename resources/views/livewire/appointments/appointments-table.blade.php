@@ -1,13 +1,13 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Pacientes') }}
+            {{ __('Citas') }}
         </h2>
     </x-slot>
 
     <div class="flex justify-end">
-        <a href="{{ route('patients.create') }}">
-            <x-primary-button >Crear paciente</x-primary-button>
+        <a href="{{ route('appointments.create') }}">
+            <x-primary-button >Crear cita</x-primary-button>
         </a>
     </div>
 
@@ -20,35 +20,41 @@
                         Acciones
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Nombre
+                        Fecha
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Teléfono
+                        Duración estimada
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Email
+                        Paciente
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Servicio
                     </th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($patients as $patient)
+                @foreach($appointments as $appointment)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <a href="{{ route('patients.edit', ['patientId' => $patient->id]) }}">
+                            <a href="{{ route('appointments.edit', ['appointmentId' => $appointment->id]) }}">
                                 Editar
                             </a>
-                            <x-danger-button wire:confirm="¿Estás seguro de realizar esta acción?" wire:click="delete({{ $patient->id }})" class="ml-2">
+                            <x-danger-button wire:confirm="¿Estás seguro de realizar esta acción?" wire:click="delete({{ $appointment->id }})" class="ml-2">
                                 Eliminar
                             </x-danger-button>
                         </th>
                         <td class="px-6 py-4">
-                            {{ $patient->name }}
+                            {{ $appointment->start_at }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $patient->phone }}
+                            {{ $appointment->duration }} minutos
                         </td>
                         <td class="px-6 py-4">
-                            {{ $patient->email }}
+                            {{ $appointment->patient->name }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $appointment->service->name }}
                         </td>
                     </tr>
                 @endforeach
@@ -57,8 +63,7 @@
         </div>
 
     </div>
-
     <div class="mt-5">
-        {{ $patients->links() }}
+        {{ $appointments->links() }}
     </div>
 </div>
