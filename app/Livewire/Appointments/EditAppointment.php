@@ -23,7 +23,7 @@ class EditAppointment extends Component
     #[Validate('required|integer')]
     public ?int $selectedService = null;
 
-    #[Validate('required|date|after:today')]
+    #[Validate('required|date')]
     public ?string $startAt = null;
 
     #[Validate('required|integer|min:5|max:720')]
@@ -80,7 +80,7 @@ class EditAppointment extends Component
 
             redirect()->route('appointments.table')->success('Cita actualizada exitosamente');
         } catch (\Exception $e) {
-            $this->error('Error al crear la cita');
+            $this->error('Error al actualizar la cita');
         }
     }
 }

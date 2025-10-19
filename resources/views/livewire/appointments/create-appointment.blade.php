@@ -17,7 +17,7 @@
                     </x-select-input>
                 </div>
                 <div class="col-span-2">
-                    <label for="selectService">Select service</label>
+                    <label for="selectService">Seleccionar servicio</label>
                     <x-select-input id="selectService" wire:model="selectedService">
                         <option value="">Seleccionar</option>
                         @foreach ($services as $service)

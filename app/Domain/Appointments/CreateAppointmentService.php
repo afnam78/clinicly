@@ -34,7 +34,7 @@ class CreateAppointmentService
                 'service_id' => $serviceId,
                 'clinic_id' => $clinicId,
                 'start_at' => $startAt,
-                'end_at' => $startAt->addMinutes($duration),
+                'end_at' => $startAt->copy()->addMinutes($duration),
                 'duration' => $duration,
                 'notes' => $notes,
                 'specialist_id' => $specialistId,
