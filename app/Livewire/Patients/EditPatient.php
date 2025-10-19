@@ -45,7 +45,7 @@ class EditPatient extends Component
         return view('livewire.patients.edit-patient');
     }
 
-    public function mount(int $patientId, GetPatientService $service)
+    public function mount(int $patientId, GetPatientService $service) : void
     {
         $patient = $service->execute($patientId);
 

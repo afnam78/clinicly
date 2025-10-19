@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Patients;
 
 use App\Domain\Enums\RoleEnum;
+use App\Domain\Patients\DeletePatientService;
 use App\Models\User;
 use Livewire\Component;
 use Masmerise\Toaster\Toastable;
@@ -20,10 +21,11 @@ class PatientsTable extends Component
         ]);
     }
 
-    public function delete(int $id) : void
+    public function delete(int $id, DeletePatientService $service) : void
     {
         try {
-            User::find($id)?->delete();
+            $service->execute($id, auth()->user()->clinic_id);
+            $this->success('Paciente eliminado correctamente');
         } catch (\Exception $e) {
             $this->error('Error al eliminar el paciente');
         }

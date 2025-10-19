@@ -18,8 +18,6 @@ return new class extends Migration
             $table->foreignId('clinic_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->decimal('price', 8, 2);
-            $table->integer('duration_minutes');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

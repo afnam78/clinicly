@@ -24,8 +24,8 @@ return new class extends Migration
 
             // Datos de la cita
             $table->dateTime('start_at');
+            $table->integer('duration'); // minutos
             $table->dateTime('end_at')->nullable(); // opcional si calculas con duración
-            $table->integer('duration')->nullable(); // minutos
 
             // Estado de la cita
             $table->enum('status', ['scheduled', 'completed', 'cancelled'])
